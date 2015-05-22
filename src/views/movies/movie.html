@@ -1,0 +1,16 @@
+<template>
+  <div class="row">
+    <div class="col-md-4">
+      <compose
+        model.bind="metadata"
+        view-model="./templates/metadata">
+      </compose>
+    </div>
+    <div class="col-md-8">
+      <compose
+        model.bind="actorList"
+        view-model="./templates/actor-list">
+      </compose>
+    </div>
+  </div>
+</template>
