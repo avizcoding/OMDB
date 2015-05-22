@@ -17,12 +17,41 @@ declare module Movie{
     metascore: string;
   }
 
-  export interface IActorList{
+  export interface IActor{
+    actorId: string;
+    actorName: string;
+    biography: {
+      actorActress: string;
+      bio: string;
+      born: string;
+      dateOfBirth: string;
+      filmography: Array<IFilmography>;
+      height: string;
+      idIMDB: string;
+      name: string;
+      placeOfBirth: string;
+      starSign: string;
+      trivia: Array<string>;
+      uniqueName: string;
+      urlPhoto: string;
+    };
+    character: string;
+    urlCharacter: string;
+    urlPhoto: string;
+    urlProfile: string;
 
   }
 
-  export interface IActor{
+  export interface IFilmography{
+    filmography: Array<IFilmographyItem>;
+    section: string;
+  }
 
+  export interface IFilmographyItem{
+    IMDBId: string;
+    remarks?: string;
+    title: string;
+    year: string;
   }
 
   export interface IDirector{

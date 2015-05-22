@@ -19172,7 +19172,7 @@
     "videoURL":"http://www.imdb.com/video/vi4006456345"
   },
   "urlIMDB":"http://www.imdb.com/title/tt2582802",
-  "urlPoster":"http://ia.media-imdb.com/images/M/MV5BMTU4OTQ3MDUyMV5BMl5BanBnXkFtZTgwOTA2MjU0MjE@._V1_SX214_AL_.jpg",
+  "urlPoster": "http://localhost:9000/dist/images/whiplash.jpg",
   "votes":"73,757",
   "writers":[
     {

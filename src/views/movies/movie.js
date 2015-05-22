@@ -29,7 +29,7 @@ export class Movie {
         this._dataService.getMovie('Whiplash', false).then(response => {
             this.movie = response;
             this.metadata = this.getMetadata(this.movie);
-            this.actorList = response;
+            this.actorList = this.getActorList(this.movie);
             this.isBusy = false;
         });
     }
@@ -55,6 +55,9 @@ export class Movie {
         metadata.rating = parseInt(movie.rating);
         metadata.metascore = movie.metascore;
         return metadata;
+    }
+    getActorList(movie) {
+        return this.movie.actors;
     }
 }
 Movie.inject = [MovieDataService];

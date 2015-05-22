@@ -1,7 +1,20 @@
 <template>
-  <ul class="list-group">
-    <li class="list-group-item" repeat.for="actor of actorList">
-      <span>${actorList.actorId}</span>
-    </li>
-  </ul>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Actor</th>
+          <th>Character</th>
+        </tr>
+      </thead>
+      <tbody data-link="row" class="rowlink" style="cursor: pointer">
+        <tr repeat.for="actor of actorList">
+            <td><a href="${actor.urlProfile}"><img src="${actor.urlPhoto}" class="img-responsive img-rounded"></a></td>
+            <td>${actor.actorName}</td>
+            <td>${actor.character}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>

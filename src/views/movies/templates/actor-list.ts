@@ -3,13 +3,14 @@
  */
 ///<reference path="../movie.d.ts"/>
   
+import 'rowlink';
 export class ActorListViewViewModel {
-  private actorList: Array<Movie.IActorList>;
+  private actorList: Array<Movie.IActor>;
 
   constructor(){
   }
   
-  activate(actorList: Array<Movie.IActorList>){
-    this.actorList = [];
+  activate(actorList: Array<Movie.IActor>){
+    this.actorList = actorList;
   }
 }

@@ -13,19 +13,19 @@ import {MovieDataService} from 'movie-module';
 export class Movie {
   public static inject = [MovieDataService];
 
-  private _movie: Movie.IMovie;
+  private _movie: any;
   private _metadata: Movie.IMetadata;
-  private _actorList: Movie.IActorList;
+  private _actorList: Array<Movie.IActor>;
   public isBusy: boolean;
 
   constructor(private _dataService: MovieDataService){
   }
 
-  public get movie(): Movie.IMovie{
+  public get movie(): any{
     return this._movie;
   }
 
-  public set movie(value: Movie.IMovie){
+  public set movie(value: any){
     this._movie = value;
   }
 
@@ -37,11 +37,11 @@ export class Movie {
     this._metadata = value;
   }
 
-  public get actorList(): Movie.IActorList{
+  public get actorList(): Array<Movie.IActor>{
     return this._actorList;
   }
 
-  public set actorList(value: Movie.IActorList){
+  public set actorList(value: Array<Movie.IActor>){
     this._actorList = value;
   }
 
@@ -51,8 +51,7 @@ export class Movie {
       this.movie = response;
 
       this.metadata = this.getMetadata(this.movie);
-
-      this.actorList = response;
+      this.actorList = this.getActorList(this.movie);
       this.isBusy = false;
     })
   }
@@ -81,5 +80,9 @@ export class Movie {
     metadata.metascore = movie.metascore;
 
     return metadata;
+  }
+
+  private getActorList(movie: any): Array<Movie.IActor>{
+    return this.movie.actors;
   }
 }

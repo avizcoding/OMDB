@@ -18,7 +18,11 @@
      System.config({
        "paths": {
          "*": "dist/*.js",
+         "external-scripts:*": "dist/external-scripts/*.js",
          "movie-module": "dist/views/movies/services/mock-service.js"
+       },
+       "map":{
+         "rowlink": "external-scripts:rowlink"
        }
      });
    </script>
