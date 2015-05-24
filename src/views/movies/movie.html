@@ -1,4 +1,8 @@
 <template>
+  <div if.bind="isBusy" class="splash">
+    <i class="fa fa-spinner fa-spin"></i>
+    <div class="message">${busyContent}</div>
+  </div>
   <div class="row">
     <div class="col-md-4">
       <compose

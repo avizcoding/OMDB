@@ -24,8 +24,15 @@ export class Movie {
     set actorList(value) {
         this._actorList = value;
     }
+    configureRouter(config, router) {
+        this.router = router;
+        config.map([
+            { route: ['', 'metadata'], moduleId: './templates/metadata', nav: true, title: 'metadata' }
+        ]);
+    }
     activate() {
         this.isBusy = true;
+        this.busyContent = "Getting data";
         this._dataService.getMovie('Whiplash', false).then(response => {
             this.movie = response;
             this.metadata = this.getMetadata(this.movie);

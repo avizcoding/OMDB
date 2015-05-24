@@ -11,6 +11,6 @@ export class MetadataViewViewModel {
 
   activate(metadata: Movie.IMetadata){
     this.metadata = metadata;
-    console.log(metadata);
+    console.log(this.metadata);
   }
 }
