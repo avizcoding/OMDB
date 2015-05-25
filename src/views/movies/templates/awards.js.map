@@ -1,1 +1,1 @@
-{"version":3,"file":"awards.js","sourceRoot":"","sources":["awards.ts"],"names":[],"mappings":"AAAA;;GAEG"}
+{"version":3,"file":"awards.js","sourceRoot":"","sources":["awards.ts"],"names":["AwardsViewViewModel","AwardsViewViewModel.activate"],"mappings":"AAAA;;GAEG;AACH,oCAAoC;AAEpC;IAGEA,QAAQA,CAACA,KAAUA;QACjBC,IAAIA,CAACA,MAAMA,GAAGA,KAAKA,CAACA;IACtBA,CAACA;AACHD,CAACA;AAAA"}

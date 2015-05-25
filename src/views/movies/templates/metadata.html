@@ -1,24 +1,25 @@
 <template>
+  <section class="au-animate">
     <div class="jumbotron" style="padding-left: 60px; padding-right: 60px">
-    <div class="row">
-      <div class="col-md-4">
-        <img src="${metadata.urlPoster}" class="img-responsive">
-      </div>
-      <div class="col-md-8">
-        <h1>${metadata.title}</h1>
-        <ul class="list-inline">
-          <li repeat.for="director of metadata.directors">
-            <h3>${director.name}</h3>
-          </li>
-        </ul>
-        <ul class="list-inline">
-          <li repeat.for="writer of metadata.writers">
-            <h4>${writer.name}</h4>
-          </li>
-        </ul>
-        <h5>${metadata.plot}</h5>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="${metadata.urlPoster}" class="img-responsive">
+        </div>
+        <div class="col-md-8">
+          <h1>${metadata.title}</h1>
+          <ul class="list-inline">
+            <li repeat.for="director of metadata.directors">
+              <h3>${director.name}</h3>
+            </li>
+          </ul>
+          <ul class="list-inline">
+            <li repeat.for="writer of metadata.writers">
+              <h4>${writer.name}</h4>
+            </li>
+          </ul>
+          <h5>${metadata.plot}</h5>
+        </div>
       </div>
     </div>
-  </div>
-  <div></div>
+  </section>
 </template>

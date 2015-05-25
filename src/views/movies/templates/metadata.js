@@ -7,7 +7,6 @@ export class MetadataViewViewModel {
     }
     activate(metadata) {
         this.metadata = metadata;
-        console.log(this.metadata);
     }
 }
 //# sourceMappingURL=metadata.js.map

@@ -5,6 +5,11 @@ declare module Movie{
   export interface IMovie{
   }
 
+  export interface IDetail{
+    data: Array<any>;
+    viewModel: string;
+  }
+
   export interface IMetadata{
     idIMDB: string;
     title: string;
@@ -15,6 +20,12 @@ declare module Movie{
     writers: Array<IWriter>;
     rating: number;
     metascore: string;
+  }
+
+  export interface IAction{
+    action: string;
+    label: string;
+    viewModel: string;
   }
 
   export interface IActor{
@@ -62,6 +73,9 @@ declare module Movie{
   export interface IWriter{
     name: string;
     nameId: string;
+  }
+
+  export interface IAward{
   }
 
   export interface IMovieRepository{

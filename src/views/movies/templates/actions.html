@@ -1,0 +1,9 @@
+<template>
+  <section class="au-animate">
+    <ul class="list-group">
+      <li class="list-group-item" repeat.for="action of actions.actions.data" click.delegate="$parent.actions.actions.detailViewCallback(action)" style="cursor: pointer">
+        <span>${action.label}</span>
+      </li>
+    </ul>
+  </section>
+</template>

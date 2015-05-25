@@ -5,30 +5,7 @@ import { MovieDataService } from 'movie-module';
 export class Movie {
     constructor(_dataService) {
         this._dataService = _dataService;
-    }
-    get movie() {
-        return this._movie;
-    }
-    set movie(value) {
-        this._movie = value;
-    }
-    get metadata() {
-        return this._metadata;
-    }
-    set metadata(value) {
-        this._metadata = value;
-    }
-    get actorList() {
-        return this._actorList;
-    }
-    set actorList(value) {
-        this._actorList = value;
-    }
-    configureRouter(config, router) {
-        this.router = router;
-        config.map([
-            { route: ['', 'metadata'], moduleId: './templates/metadata', nav: true, title: 'metadata' }
-        ]);
+        this.detail = { data: [], viewModel: '' };
     }
     activate() {
         this.isBusy = true;
@@ -36,9 +13,32 @@ export class Movie {
         this._dataService.getMovie('Whiplash', false).then(response => {
             this.movie = response;
             this.metadata = this.getMetadata(this.movie);
-            this.actorList = this.getActorList(this.movie);
+            this.detail.data = this.getActorList(this.movie);
+            this.detail.viewModel = 'views/movies/templates/actor-list';
+            this.actions = {
+                detailViewCallback: this.changeDetailView.bind(this),
+                data: [{
+                        action: 'actor-list',
+                        label: 'Actors',
+                        viewModel: './templates/actor-list'
+                    },
+                    {
+                        action: 'awards',
+                        label: 'Awards',
+                        viewModel: './templates/awards'
+                    },
+                    {
+                        action: 'trivia',
+                        label: 'Trivia',
+                        viewModel: './templates/trivia'
+                    }]
+            };
             this.isBusy = false;
         });
+    }
+    changeDetailView(action) {
+        this.detail.data = this.getAwardList();
+        this.detail.viewModel = action.viewModel;
     }
     getMetadata(movie) {
         var metadata = {
@@ -65,6 +65,9 @@ export class Movie {
     }
     getActorList(movie) {
         return this.movie.actors;
+    }
+    getAwardList() {
+        return this.movie.awards;
     }
 }
 Movie.inject = [MovieDataService];

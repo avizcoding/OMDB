@@ -1,1 +1,1 @@
-{"version":3,"file":"trivia.js","sourceRoot":"","sources":["trivia.ts"],"names":[],"mappings":"AAAA;;GAEG"}
+{"version":3,"file":"trivia.js","sourceRoot":"","sources":["trivia.ts"],"names":["TriviaViewViewModel","TriviaViewViewModel.activate"],"mappings":"AAGA,AAHA;;GAEG;;IAEDA,QAAQA,CAACA,KAAUA;QACjBC,OAAOA,CAACA,GAAGA,CAACA,KAAKA,CAACA,CAACA;IACrBA,CAACA;AACHD,CAACA;AAAA"}

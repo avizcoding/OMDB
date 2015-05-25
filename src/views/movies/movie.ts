@@ -15,44 +15,14 @@ export class Movie {
   public static inject = [MovieDataService];
   public router: Router;
 
-  private _movie: any;
-  private _metadata: Movie.IMetadata;
-  private _actorList: Array<Movie.IActor>;
+  private movie: any;
+  private metadata: Movie.IMetadata;
+  private detail: Movie.IDetail = {data: [], viewModel: ''};
+  private actions: { detailViewCallback: () => void; data: Array<Movie.IAction> };
   public isBusy: boolean;
   public busyContent: string;
 
   constructor(private _dataService: MovieDataService){
-  }
-
-  public get movie(): any{
-    return this._movie;
-  }
-
-  public set movie(value: any){
-    this._movie = value;
-  }
-
-  public get metadata(): Movie.IMetadata{
-    return this._metadata;
-  }
-
-  public set metadata(value: Movie.IMetadata){
-    this._metadata = value;
-  }
-
-  public get actorList(): Array<Movie.IActor>{
-    return this._actorList;
-  }
-
-  public set actorList(value: Array<Movie.IActor>){
-    this._actorList = value;
-  }
-
-  public configureRouter(config: IRouterConfig, router: Router){
-    this.router = router;
-    config.map([
-      {route: ['', 'metadata'], moduleId: './templates/metadata', nav: true, title: 'metadata'}
-    ]);
   }
 
   public activate(){
@@ -62,9 +32,35 @@ export class Movie {
       this.movie = response;
 
       this.metadata = this.getMetadata(this.movie);
-      this.actorList = this.getActorList(this.movie);
+      this.detail.data = this.getActorList(this.movie);
+      this.detail.viewModel = 'views/movies/templates/actor-list';
+
+      this.actions = {
+        detailViewCallback: this.changeDetailView.bind(this),
+        data: [{
+          action: 'actor-list',
+          label: 'Actors',
+          viewModel: './templates/actor-list'
+        },
+        {
+          action: 'awards',
+          label: 'Awards',
+          viewModel: './templates/awards'
+        },
+        {
+          action: 'trivia',
+          label: 'Trivia',
+          viewModel: './templates/trivia'
+        }]
+      };
+
       this.isBusy = false;
     })
+  }
+
+  public changeDetailView(action: Movie.IAction){
+    this.detail.data = this.getAwardList();
+    this.detail.viewModel = action.viewModel;
   }
 
   private getMetadata(movie: any): Movie.IMetadata{
@@ -95,5 +91,9 @@ export class Movie {
 
   private getActorList(movie: any): Array<Movie.IActor>{
     return this.movie.actors;
+  }
+
+  private getAwardList(): Array<Movie.IAward>{
+    return this.movie.awards;
   }
 }
